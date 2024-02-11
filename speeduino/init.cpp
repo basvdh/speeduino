@@ -2193,6 +2193,69 @@ void setPinMapping(byte boardID)
       pinFan = 12; //Pin for the fan output
       pinResetControl = 46; //Reset control output PLACEHOLDER value for now
     break;
+
+    case 43:
+      //Pin mappings for all GasDuino
+      injectorOutputControl = OUTPUT_CONTROL_MC33810;
+      ignitionOutputControl = OUTPUT_CONTROL_MC33810;
+      pinMC33810_1_CS = 9;
+      pinMC33810_2_CS = 10;
+      //Pin alignment to the MC33810 outputs
+      MC33810_BIT_INJ1 = 3;
+      MC33810_BIT_INJ2 = 1;
+      MC33810_BIT_INJ3 = 0;
+      MC33810_BIT_INJ4 = 2;
+      MC33810_BIT_IGN1 = 4;
+      MC33810_BIT_IGN2 = 5;
+      MC33810_BIT_IGN3 = 6;
+      MC33810_BIT_IGN4 = 7;
+
+      MC33810_BIT_INJ5 = 3;
+      MC33810_BIT_INJ6 = 1;
+      MC33810_BIT_INJ7 = 0;
+      MC33810_BIT_INJ8 = 2;
+      // MC33810_BIT_IGN5 = 4;
+      // MC33810_BIT_IGN6 = 5;
+      // MC33810_BIT_IGN7 = 6;
+      // MC33810_BIT_IGN8 = 7;
+
+      //The injector pins below are not used directly as the control is via SPI through the MC33810s, however the pin numbers are set to be the SPI pins (SCLK, MOSI, MISO and CS) so that nothing else will set them as inputs
+      pinInjector1 = 13; //SCLK
+      pinInjector2 = 11; //MOSI
+      pinInjector3 = 12; //MISO
+      pinInjector4 = 10; //CS for MC33810 1
+      pinInjector5 = 9; //CS for MC33810 2
+      pinInjector6 = 9; //CS for MC33810 3
+
+      //Dummy pins, without thes pin 0 (Serial1 RX) gets overwritten
+      pinCoil1 = 40;
+      pinCoil2 = 41;
+
+      //Pin mapping for Gasduino
+      pinBaro = A4; 
+      pinMAP = A5;
+      pinTPS = A3; //TPS input pin
+      pinIAT = A0; //IAT sensor pin
+      pinCLT = A1; //CLS sensor pin
+      pinO2 = A2; //O2 Sensor pin
+      pinO2_2 = A10;
+      pinBat = A15; //Battery reference voltage pin. Needs Alpha4+
+      pinFlex = A11;
+      pinLaunch = 26;
+      pinIdle1 = 29;
+      pinFuelPump = 30;
+      pinVVT_1 = 31;
+      pinBoost = 27;
+      pinFan = 28;
+      pinTachOut = 4;
+      pinTrigger = 20; //The CAS pin
+      pinTrigger2 = 21; //The Cam Sensor pin
+      pinSpareTemp1 = A16; 
+      pinSpareTemp2 = A17;
+
+      pinResetControl = 49; //PLaceholder only. Cannot use 42-47 as these are the SD card
+
+    break;
     
     case 45:
     #ifndef SMALL_FLASH_MODE //No support for bluepill here anyway
